@@ -1,3 +1,29 @@
 body {
     text-align: center;
+    font-family: 'Monoton', cursive;
+    background-color: #000;
+}
+
+
+h1 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 3em;
+    color: red;
+    text-shadow: -4px -2px 1px #006F00;
+    letter-spacing: 0.1em;
+}
+
+.layer {
+    width: 505px;
+    height: 606px;
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    left: calc(50% - 252px);
+    top: 75px;
+}
+
+canvas {
+    margin-top: -40px;
+    position: relative;
 }
