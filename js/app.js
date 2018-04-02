@@ -31,6 +31,34 @@ function Player(x, y) {
 Player.prototype = Object.create(Enemy.prototype);
 Player.prototype.constructor = Player;
 
+
+//The input is the keyCode of the keyboard's arrows
+Player.prototype.handleInput = function(input) {
+
+    switch(input) {
+      case "left":
+      if(this.x > 0) {
+        this.x -= 101;
+      } //Avoid the player goes outside/left of the grid
+      break;
+      case "right":
+      if(this.x < 404) {
+        this.x += 101;
+      }//Avoid the player goes outside/right of the grid
+      break;
+      case "up":
+      if(this.y > -16) {
+        this.y -= 83;
+      }//Avoid the player goes outside/up of the grid
+      break;
+      case "down":
+      if(this.y < 399) {
+        this.y += 83;
+      }//Avoid the player goes outside/down of the grid
+      break;
+    }
+  };
+
 /*
 ----------------------
 INSTANTIATE ENEMIES AND PLAYER
@@ -40,6 +68,8 @@ allEnemies.push(new Enemy(-100, 67), new Enemy(-90, 233), new Enemy(-200, 150));
 
 const player = new Player(202, 399);
 
+
+// This listens for key presses and sends the keys to your Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
