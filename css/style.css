@@ -2,6 +2,7 @@ body {
     text-align: center;
     font-family: 'Monoton', cursive;
     background-color: #000;
+    overflow: hidden;
 }
 
 
@@ -12,7 +13,32 @@ h1 {
     color: red;
     text-shadow: -4px -2px 1px #006F00;
     letter-spacing: 0.1em;
+    -webkit-animation: pulse 2s infinite;
+    animation: pulse 2s infinite;
 }
+
+h1.stop {
+  animation: pulse 2s 1;
+}
+
+@keyframes pulse {
+  20% {
+    transform: scale(1.1);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(1.1);
+  }
+
+  80% {
+    transform: scale(1);
+  }
+}
+
 
 .layer {
     width: 505px;
