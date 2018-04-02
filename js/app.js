@@ -1,3 +1,4 @@
+"use strict"
 
 /*
 -----------------------------------
@@ -55,6 +56,15 @@ Player.prototype.constructor = Player;
 
 Player.prototype.update = function() {
   this.handleInput();
+
+  // perform a check on the coords of player and bugs, and if there is a match, invoke reset
+  for(let enemy of allEnemies) {
+       if( (this.x >= enemy.x - 60) && (this.x <= enemy.x + 60) ) {
+         if(enemy.y === this.y) {
+            this.reset();
+         }
+       }
+     }
 
 };
 
