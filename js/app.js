@@ -8,6 +8,8 @@ var Enemy = function(x, y, speed) {
   this.y = y;
   this.speed = speed;
   this.sprite = 'images/enemy-bug.png';
+  this.initialPosition = x;
+  this.initialSpeed = speed;
 };
 
 
@@ -29,6 +31,12 @@ Enemy.prototype.update = function moveBugs(dt) {
         this.speed = 1;
       }//avoid extreme speeds
     }
+};
+
+//Reset the position and speed of enemies
+Enemy.prototype.reset = function(x, speed) {
+    this.x = x;
+    this.speed = speed;
 };
 
 
@@ -60,6 +68,7 @@ Player.prototype.handleInput = function(input) {
   //if the user reaches the water come back to initial position
     if(this.y === -16) {
       this.reset();
+      allEnemies.forEach(enemy => enemy.reset(enemy.initialPosition, enemy.initialSpeed));
     }
 
     switch(input) {
