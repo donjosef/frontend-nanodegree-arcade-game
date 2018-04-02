@@ -31,9 +31,22 @@ function Player(x, y) {
 Player.prototype = Object.create(Enemy.prototype);
 Player.prototype.constructor = Player;
 
+Player.prototype.update = function() {
+  this.handleInput();
+
+};
+
+Player.prototype.reset = function() {
+  this.x = 202;
+  this.y = 399;
+};
 
 //The input is the keyCode of the keyboard's arrows
 Player.prototype.handleInput = function(input) {
+  //if the user reaches the water come back to initial position
+    if(this.y === -16) {
+      this.reset();
+    }
 
     switch(input) {
       case "left":
