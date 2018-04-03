@@ -127,3 +127,24 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function instruction() {
+  const layer = document.createElement("div");
+  const btn = document.createElement("button");
+  const h2 = document.createElement("h2");
+  const text = document.createElement("p");
+  h2.textContent = "How to Play";
+  text.textContent = "Use the arrow keys on the keyboard to move the player along the grid, trying to avoid the bugs. If the player reaches the water, the game is won";
+  layer.classList.add("layer");
+  btn.classList.add("startGame");
+  document.body.appendChild(layer);
+  btn.textContent = "Start Game";
+  layer.appendChild(btn);
+  layer.appendChild(h2);
+  layer.appendChild(text);
+  text.classList.add("info");
+  h2.classList.add("howTo");
+
+}
+
+document.addEventListener("DOMContentLoaded", instruction);

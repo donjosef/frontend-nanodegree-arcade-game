@@ -1,12 +1,13 @@
 body {
+  font-family: 'Press Start 2P', cursive;
     text-align: center;
-    font-family: 'Monoton', cursive;
     background-color: #000;
     overflow: hidden;
 }
 
 
 h1 {
+  font-family: 'Monoton', cursive;
     margin-bottom: 0;
     margin-top: 0;
     font-size: 3em;
@@ -43,6 +44,37 @@ h1 {
     position: absolute;
     left: calc(50% - 252px);
     top: 75px;
+}
+
+.howTo {
+  color: #bbb;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  margin-top: 50px;
+}
+
+.info {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  color: #bbb;
+  padding: 5px;
+  line-height: 1.3em;
+}
+
+.startGame {
+  font-size: 1.5em;
+  font-family: 'Press Start 2P', cursive;
+  color: red;
+  position: absolute;
+  top: 500px;
+  left: calc(50% - 130px);
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #55fF55;
+  box-shadow: inset 1px 1px 1px 2px rgb(55, 155, 55);
+  border: none;
+  cursor: pointer;
 }
 
 canvas {
