@@ -1,5 +1,6 @@
 "use strict"
 
+
 /*
 -----------------------------------
 ENEMY CONSTRUCTOR/PROTOTYPE SECTION
@@ -54,8 +55,8 @@ function Player(x, y) {
 Player.prototype = Object.create(Enemy.prototype);
 Player.prototype.constructor = Player;
 
+//Change the update of player , otherwise the player will move like the bugs
 Player.prototype.update = function() {
-  this.handleInput();
 
   // perform a check on the coords of player and bugs, and if there is a match, invoke reset
   for(let enemy of allEnemies) {
@@ -65,7 +66,6 @@ Player.prototype.update = function() {
          }
        }
      }
-
 };
 
 Player.prototype.reset = function() {
@@ -75,13 +75,8 @@ Player.prototype.reset = function() {
 
 //The input is the keyCode of the keyboard's arrows
 Player.prototype.handleInput = function(input) {
-  //if the user reaches the water come back to initial position
-    if(this.y === -16) {
-      this.reset();
-      allEnemies.forEach(enemy => enemy.reset(enemy.initialPosition, enemy.initialSpeed));
-    }
-
     switch(input) {
+
       case "left":
       if(this.x > 0) {
         this.x -= 101;
@@ -103,6 +98,12 @@ Player.prototype.handleInput = function(input) {
       }//Avoid the player goes outside/down of the grid
       break;
     }
+
+    //if the user reaches the water come back to initial position. Important to put this if statement at the very end of handleInput for a correct behavior
+      if(this.y === -16) {
+        this.reset();
+        allEnemies.forEach(enemy => enemy.reset(enemy.initialPosition, enemy.initialSpeed));
+      }
   };
 
 /*
