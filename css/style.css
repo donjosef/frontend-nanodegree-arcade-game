@@ -13,12 +13,8 @@ h1 {
     color: red;
     text-shadow: -4px -2px 1px #006F00;
     letter-spacing: 0.1em;
-    -webkit-animation: pulse 2s infinite;
-    animation: pulse 2s infinite;
-}
-
-h1.stop {
-  animation: pulse 2s 1;
+    -webkit-animation: pulse 2s 4;
+    animation: pulse 2s 4;
 }
 
 @keyframes pulse {
