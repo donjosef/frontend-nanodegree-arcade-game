@@ -1,6 +1,11 @@
-frontend-nanodegree-arcade-game
-===============================
+# Udacity Arcade game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Purpose of the project
+The main goal of this project of _Udacity frontend Nanodegree_ is to learn and manage OOP with Javascript. In particular we were given a visual assets and a game loop engine and was our task to implement all of the OOP paradigms such as constructor functions, prototypal inheritance, instantiation.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Get started
+Clik on the following link the get started: [https://donjosef.github.io/frontend-nanodegree-arcade-game/]
+
+## How to play
+The goal of the game is to reach the water on the other side of the player's position. The player can move around the grid with the keyboard's arrow 
+**up**, **down**, **left**, **right**. When the player collides with a bug, the player will go back to initial position. When the player reaches the water the game is won. You can decide to restart by clicking on the Play Again button. Enjoy!
