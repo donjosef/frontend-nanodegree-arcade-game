@@ -1,5 +1,10 @@
 "use strict"
 
+const btn = document.querySelector("button");
+const layer = document.querySelector(".layer"); //layer html
+const win_text = document.querySelector(".win");
+const playAgain = document.querySelector(".playAgainHidden");
+const title = document.querySelector("h1");
 
 /*
 -----------------------------------
@@ -101,10 +106,18 @@ Player.prototype.handleInput = function(input) {
 
     //if the user reaches the water come back to initial position. Important to put this if statement at the very end of handleInput for a correct behavior
       if(this.y === -16) {
-        this.reset();
-        allEnemies.forEach(enemy => enemy.reset(enemy.initialPosition, enemy.initialSpeed));
+        victory();
       }
   };
+
+Player.prototype.playAgain = function() {
+  player.reset();
+  allEnemies.forEach(enemy => enemy.reset( enemy.initialPosition, enemy.initialSpeed ));
+  document.addEventListener("keyup", movePlayer); 
+  layer.classList.add("hidden"); 
+  playAgain.classList.remove("playAgain"); //remove the button playagain
+  
+};
 
 /*
 ----------------------
@@ -116,35 +129,35 @@ allEnemies.push(new Enemy(-100, 67, 1), new Enemy(-90, 233, 2), new Enemy(-200, 
 const player = new Player(202, 399);
 
 
-// This listens for key presses and sends the keys to your Player.handleInput() method.
-document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+function victory() {
+  layer.classList.remove("hidden");
+  Array.from(layer.children).forEach(child => child.classList.add("hidden"));
+  allEnemies.forEach(enemy => enemy.speed = 0);
+  document.removeEventListener("keyup", movePlayer);
+  win_text.style.cssText = "display: block; margin-top: 200px; color: #fff; font-size: 1.5em;"; /*important! otherwise, adding hidden to all of the children, this text will never be visible*/
+  playAgain.classList.add("playAgain");
+  playAgain.classList.remove("playAgainHidden");
+};
 
-    player.handleInput(allowedKeys[e.keyCode]);
-});
 
-function instruction() {
-  const layer = document.createElement("div");
-  const btn = document.createElement("button");
-  const h2 = document.createElement("h2");
-  const text = document.createElement("p");
-  h2.textContent = "How to Play";
-  text.textContent = "Use the arrow keys on the keyboard to move the player along the grid, trying to avoid the bugs. If the player reaches the water, the game is won";
-  layer.classList.add("layer");
-  btn.classList.add("startGame");
-  document.body.appendChild(layer);
-  btn.textContent = "Start Game";
-  layer.appendChild(btn);
-  layer.appendChild(h2);
-  layer.appendChild(text);
-  text.classList.add("info");
-  h2.classList.add("howTo");
+playAgain.addEventListener("click", player.playAgain);
 
+
+function movePlayer(e) {
+  var allowedKeys = {
+      37: 'left',
+      38: 'up',
+      39: 'right',
+      40: 'down'
+  };
+
+  player.handleInput(allowedKeys[e.keyCode]);
 }
+// This listens for key presses and sends the keys to your Player.handleInput() method.
+document.addEventListener('keyup', movePlayer);
 
-document.addEventListener("DOMContentLoaded", instruction);
+btn.addEventListener("click", function() {
+    layer.classList.add("hidden");
+    title.style.animationIterationCount = 0;
+    
+  });
