@@ -15,7 +15,7 @@ h1 {
     text-shadow: -4px -2px 1px #006F00;
     letter-spacing: 0.1em;
     -webkit-animation: pulse 2s 4;
-    animation: pulse 2s 4;
+    animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
@@ -38,12 +38,17 @@ h1 {
 
 
 .layer {
+  z-index: 2;
     width: 505px;
     height: 606px;
     background-color: rgba(0,0,0,0.6);
     position: absolute;
     left: calc(50% - 252px);
     top: 75px;
+}
+
+.hidden {
+  display: none;
 }
 
 .howTo {
@@ -61,7 +66,7 @@ h1 {
   line-height: 1.3em;
 }
 
-.startGame {
+button {
   font-size: 1.5em;
   font-family: 'Press Start 2P', cursive;
   color: red;
@@ -75,6 +80,31 @@ h1 {
   box-shadow: inset 1px 1px 1px 2px rgb(55, 155, 55);
   border: none;
   cursor: pointer;
+}
+
+.playAgain {
+  z-index: 3;
+  font-size: 1.5em;
+  font-family: 'Press Start 2P', cursive;
+  color: red;
+  position: absolute;
+  top: 500px;
+  left: calc(50% - 130px);
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #55fF55;
+  box-shadow: inset 1px 1px 1px 2px rgb(55, 155, 55);
+  border: none;
+  cursor: pointer;
+}
+
+.playAgainHidden {
+  display: none;
+}
+
+.win {
+  display: none;
 }
 
 canvas {
