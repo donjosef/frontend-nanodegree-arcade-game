@@ -107,6 +107,18 @@ button {
   display: none;
 }
 
+.gameOver {
+    display: none;
+}
+
+.gameOver.show {
+    display: block; 
+    margin-top: 200px; 
+    color: #fff; 
+    font-size: 1.5em;
+}
+
+
 canvas {
     margin-top: -40px;
     position: relative;
