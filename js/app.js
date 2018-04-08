@@ -5,6 +5,7 @@ const layer = document.querySelector(".layer"); //layer html
 const win_text = document.querySelector(".win");
 const playAgain = document.querySelector(".playAgainHidden");
 const title = document.querySelector("h1");
+const gameOver_text = document.querySelector(".gameOver");
 
 /*
 -----------------------------------
@@ -54,6 +55,7 @@ PLAYER CONSTRUCTOR/PROTOTYPE SECTION
 function Player(x, y) {
   Enemy.call(this, x, y); //Call the super Contructor to avoid duplicated logic
   this.sprite = 'images/char-boy.png';
+    this.lives = 3;
 }
 
 //Extending prototype chain
@@ -68,6 +70,11 @@ Player.prototype.update = function() {
        if( (this.x >= enemy.x - 60) && (this.x <= enemy.x + 60) ) {
          if(enemy.y === this.y) {
             this.reset();
+            this.lives--;
+             if(this.lives === 0) {
+                 this.gameOver();
+                 this.lives = 3;
+             }
          }
        }
      }
@@ -77,6 +84,17 @@ Player.prototype.reset = function() {
   this.x = 202;
   this.y = 399;
 };
+
+Player.prototype.gameOver = function() {
+  layer.classList.remove("hidden"); //Show the layer
+  Array.from(layer.children).forEach(child => child.classList.add("hidden")); //Hide all the children of the layer element
+  allEnemies.forEach(enemy => enemy.speed = 0); //stop the enemies from updating thei position
+  document.removeEventListener("keyup", movePlayer); //remove the input fro moving the player
+  win_text.style.cssText = "display: none;";
+  playAgain.classList.add("playAgain");
+  playAgain.classList.remove("playAgainHidden");
+    gameOver_text.classList.add("show"); //show the text game over
+}
 
 //The input is the keyCode of the keyboard's arrows
 Player.prototype.handleInput = function(input) {
@@ -116,6 +134,7 @@ Player.prototype.playAgain = function() {
   document.addEventListener("keyup", movePlayer); 
   layer.classList.add("hidden"); 
   playAgain.classList.remove("playAgain"); //remove the button playagain
+    gameOver_text.classList.remove("show"); //hide the game over message
   
 };
 
